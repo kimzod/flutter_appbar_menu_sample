@@ -21,16 +21,9 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Appbar Icon Menu'),
+        title: Text('Test Market'),
         centerTitle: true,
         elevation: 0.0,
-        // leading : 아이콘 버튼이나 간단한 위젯을 왼쪽에 배치
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: (){
-            print('menu button is clicked!!');
-          },
-        ),
         // actions : 복수의 아이콘 버튼 등을 오른쪽에 배치할 때
         actions: <Widget>[
           IconButton(
@@ -46,6 +39,64 @@ class MyPage extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              // 현재 계정
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/kjh_trans.png'),
+                backgroundColor: Colors.white,
+              ),
+              // 다른 계정
+              otherAccountsPictures: <Widget>[
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/kjh_2.jpg'),
+                  backgroundColor: Colors.white,
+                ),
+              ],
+
+              accountName: Text('zodlab'),
+              accountEmail: Text('arottinghalo@naver.com'),
+              onDetailsPressed: (){
+                print('clicked!!');
+              },
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home, color: Colors.grey[800],),
+              title: Text('Home'),
+              onTap: (){
+                print('Home clicked!!');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings, color: Colors.grey[800],),
+              title: Text('Setting'),
+              onTap: (){
+                print('Setting clicked!!');
+              },
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(Icons.question_answer, color: Colors.grey[800],),
+              title: Text('Q&A'),
+              onTap: (){
+                print('Q&A clicked!!');
+              },
+              trailing: Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
     );
   }
